@@ -17,7 +17,7 @@ describe("Home page", () => {
   it("renders the hub heading and a card for every tool", () => {
     renderAt("#/")
     expect(
-      screen.getByRole("heading", { level: 1, name: /temi tools, prototyped one at a time/i })
+      screen.getByRole("heading", { level: 1, name: /^temi tools$/i })
     ).toBeInTheDocument()
     for (const tool of tools) {
       expect(screen.getByRole("heading", { level: 3, name: tool.name })).toBeInTheDocument()
@@ -47,7 +47,7 @@ describe("Tool pages", () => {
     const [backLink] = screen.getAllByRole("link", { name: /all tools/i })
     await user.click(backLink)
     expect(
-      await screen.findByRole("heading", { level: 1, name: /temi tools, prototyped one at a time/i })
+      await screen.findByRole("heading", { level: 1, name: /^temi tools$/i })
     ).toBeInTheDocument()
   })
 })

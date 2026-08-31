@@ -2,26 +2,12 @@ import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 import { tools } from "@/data/tools"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 
 export function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-10 max-w-2xl">
-        <Badge variant="secondary" className="mb-3">
-          INIT-04 · Free Tool Suite
-        </Badge>
-        <h1 className="mb-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Temi tools, prototyped one at a time
-        </h1>
-        <p className="text-muted-foreground">
-          Five standalone prototypes — a cost calculator, a dose &amp; vial calculator, an
-          eligibility screen, a refill checker, and a titration planner — built to be reviewed and
-          greenlit individually before anything is folded into usetemi.com. Each tool is
-          physician-review-pending, runs entirely in your browser, and follows Temi's compliance
-          guardrails for clinical framing, pricing disclosures, and compounded-vs-brand
-          distinctions.
-        </p>
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Temi tools</h1>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
