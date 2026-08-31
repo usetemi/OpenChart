@@ -26,7 +26,7 @@ export function ToolPageShell({
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-10">
       <Link
         to="/"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground print:hidden"
       >
         <ArrowLeft className="h-4 w-4" />
         All tools

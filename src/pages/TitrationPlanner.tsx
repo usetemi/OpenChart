@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react"
-import { LineChart } from "lucide-react"
+import { LineChart, Printer } from "lucide-react"
 import { ToolPageShell } from "@/components/tool/tool-page-shell"
 import { ResultPanel } from "@/components/tool/result-panel"
 import { MethodologyBlock } from "@/components/tool/methodology-block"
@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import {
   Select,
   SelectContent,
@@ -85,15 +86,26 @@ export function TitrationPlannerPage() {
       tagline={meta.description}
       tool={
         <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <LineChart className="h-5 w-5 text-primary" />
-              Generate a reference calendar
-            </CardTitle>
-            <CardDescription>
-              A general planning aid based on typical FDA-labeled steps — not a personalized
-              prescription.
-            </CardDescription>
+          <CardHeader className="flex flex-row items-start justify-between gap-3">
+            <div>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <LineChart className="h-5 w-5 text-primary" />
+                Generate a reference calendar
+              </CardTitle>
+              <CardDescription>
+                A general planning aid based on typical FDA-labeled steps — not a personalized
+                prescription.
+              </CardDescription>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="print:hidden"
+              onClick={() => window.print()}
+            >
+              <Printer className="h-4 w-4" />
+              Print schedule
+            </Button>
           </CardHeader>
           <CardContent className="grid gap-6">
             <div className="grid gap-4 sm:grid-cols-2">
@@ -190,14 +202,22 @@ export function TitrationPlannerPage() {
             prescriber before you change your dose.
           </SafetyNote>
 
-          <MethodologyBlock
-            lastUpdated="August 31, 2026 (prototype build)"
-            calculation="This tool calculates each step's date range like this: start date, plus the week number minus 1, multiplied by 7 days. The dose values and week counts follow the general pattern in FDA labeling for these medication classes."
-            dataSource="This tool uses public FDA prescribing information for semaglutide and tirzepatide medications. This tool is not connected to your real prescription. This tool is not connected to Temi's clinical system."
-            limitations="This tool does not include dose changes your prescriber makes for side effects. This tool does not include a slower or faster schedule. This tool does not include a treatment hold. This tool does not include a different starting dose."
-          />
+          <p className="hidden text-xs text-muted-foreground print:block">
+            Printed from the Temi Tools prototype on{" "}
+            {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+            . Confirm this schedule with your prescriber before you follow it.
+          </p>
 
-          <div className="max-w-none text-sm leading-relaxed text-muted-foreground">
+          <div className="print:hidden">
+            <MethodologyBlock
+              lastUpdated="August 31, 2026 (prototype build)"
+              calculation="This tool calculates each step's date range like this: start date, plus the week number minus 1, multiplied by 7 days. The dose values and week counts follow the general pattern in FDA labeling for these medication classes."
+              dataSource="This tool uses public FDA prescribing information for semaglutide and tirzepatide medications. This tool is not connected to your real prescription. This tool is not connected to Temi's clinical system."
+              limitations="This tool does not include dose changes your prescriber makes for side effects. This tool does not include a slower or faster schedule. This tool does not include a treatment hold. This tool does not include a different starting dose."
+            />
+          </div>
+
+          <div className="max-w-none text-sm leading-relaxed text-muted-foreground print:hidden">
             <h2 className="mb-2 text-base font-semibold text-foreground">
               Why a calendar, not just a dosing chart
             </h2>

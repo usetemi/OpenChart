@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 import { cleanup, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import App from "@/App"
@@ -67,6 +67,31 @@ describe("GLP-1 Cost Calculator", () => {
     expect(screen.queryByText(/marketplace service fee \(20%\)/i)).not.toBeInTheDocument()
     expect(screen.getByText(/temi care membership \(\$449\/yr\)/i)).toBeInTheDocument()
   })
+
+  it("shows a retail comparison for compounded medications but not for brand-name", async () => {
+    const user = userEvent.setup()
+    renderAt("#/glp-1-cost-calculator")
+
+    expect(screen.getByText(/typical retail, no published cap/i)).toBeInTheDocument()
+
+    await user.click(screen.getByRole("combobox"))
+    await user.click(await screen.findByRole("option", { name: /brand-name glp-1/i }))
+    expect(screen.queryByText(/typical retail, no published cap/i)).not.toBeInTheDocument()
+  })
+
+  it("switches to a yearly total and drops the monthly prescription-status toggle", async () => {
+    const user = userEvent.setup()
+    renderAt("#/glp-1-cost-calculator")
+
+    expect(screen.getByText(/estimated total this month/i)).toBeInTheDocument()
+    expect(screen.getByRole("radio", { name: /new prescription/i })).toBeInTheDocument()
+
+    await user.click(screen.getByRole("tab", { name: /per year/i }))
+
+    expect(screen.getByText(/estimated total this year/i)).toBeInTheDocument()
+    expect(screen.queryByRole("radio", { name: /new prescription/i })).not.toBeInTheDocument()
+    expect(screen.getByText(/1 new-prescription fill and 11 refills/i)).toBeInTheDocument()
+  })
 })
 
 describe("Dose & Vial Calculator", () => {
@@ -88,5 +113,18 @@ describe("Eligibility & Availability Checker", () => {
     await user.click(await screen.findByRole("option", { name: "Wyoming" }))
 
     expect(await screen.findByText(/not yet available in wyoming/i)).toBeInTheDocument()
+  })
+})
+
+describe("Titration Schedule Planner", () => {
+  it("offers a print button that calls window.print", async () => {
+    const user = userEvent.setup()
+    const printSpy = vi.spyOn(window, "print").mockImplementation(() => {})
+    renderAt("#/titration-planner")
+
+    await user.click(screen.getByRole("button", { name: /print schedule/i }))
+    expect(printSpy).toHaveBeenCalledOnce()
+
+    printSpy.mockRestore()
   })
 })
