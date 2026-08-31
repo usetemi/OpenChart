@@ -172,18 +172,18 @@ export function RefillCheckerPage() {
       supportingContent={
         <>
           <SafetyNote title="Refills vs. renewals" variant="default">
-            A refill dispenses more of a prescription that's already been authorized. A renewal
-            means a prescriber needs to review your case again before authorizing more — because
-            your refills ran out, because enough time has passed, or because your prescriber set
-            it that way. This tool only covers non-controlled medications and does not submit any
-            refill request; it estimates timing so you know what to expect.
+            A refill gives you more of an already authorized prescription. A renewal needs a new
+            review from your prescriber. A renewal can happen for three reasons: your refills ran
+            out, enough time has passed, or your prescriber set a review requirement. This tool
+            covers non-controlled medications only. This tool does not send a refill request. This
+            tool estimates timing only.
           </SafetyNote>
 
           <MethodologyBlock
             lastUpdated="August 31, 2026 (prototype build)"
-            calculation={`Refill-eligible date = last fill date + days supply − a ${EARLY_REFILL_WINDOW_DAYS}-day early-refill window. Renewal due date = last clinical review date + ${RENEWAL_INTERVAL_DAYS} days. If refills remaining is 0, or the renewal due date has passed, a renewal is shown regardless of the refill-eligible date.`}
-            dataSource="A representative early-refill window and a 12-month clinical review interval, consistent with typical non-controlled prescription practice. This is a general model, not Temi's specific pharmacy or clinical policy configuration."
-            limitations="Your specific pharmacy's fill history, insurance-driven refill-too-soon rules, and any manual hold a prescriber has placed on your prescription."
+            calculation={`This tool calculates your refill-eligible date like this: last fill date, plus days of supply, minus a ${EARLY_REFILL_WINDOW_DAYS}-day early-refill window. This tool calculates your renewal due date like this: last clinical review date, plus ${RENEWAL_INTERVAL_DAYS} days. This tool shows a renewal message if you have 0 refills remaining. This tool also shows a renewal message if the renewal due date has passed. This happens even if the refill-eligible date has not arrived.`}
+            dataSource="This tool uses a common early-refill window. This tool uses a 12-month interval for clinical review. These values match typical practice for non-controlled prescriptions. This is a general model. This is not Temi's specific pharmacy policy or clinical policy."
+            limitations="This tool does not check your pharmacy's fill history. This tool does not check insurance refill-too-soon rules. This tool does not check a manual hold from your prescriber."
           />
 
           <div className="max-w-none text-sm leading-relaxed text-muted-foreground">
@@ -191,17 +191,17 @@ export function RefillCheckerPage() {
               The distinction people actually get stuck on
             </h2>
             <p className="mb-3">
-              Refill timing questions are a real, currently under-served demand pool, distinct
-              from GLP-1 questions and far less competitive. Most of the confusion isn't about
-              whether a refill is possible — it's about whether what's needed is a refill at all,
-              or a renewal: a new clinical review because refills ran out, because enough time has
-              passed since the prescriber last looked at the case, or both at once.
+              Many people ask questions about refill timing. Few tools answer these questions
+              well. Most confusion is not about refill availability. Most confusion is about the
+              difference between a refill and a renewal. A renewal needs a new clinical review. A
+              renewal can happen because refills ran out. A renewal can happen because time has
+              passed since the last review. Both reasons can apply at the same time.
             </p>
             <p>
-              This tool exists to answer that specific question plainly, before someone finds out
-              the hard way at the pharmacy counter that a "refill" they expected actually requires
-              a clinical review first — which is also why the result leads with which one applies,
-              not just a date.
+              This tool answers that question in plain terms. This tool helps you avoid a surprise
+              at the pharmacy counter. Without this tool, you might expect a refill but need a
+              renewal instead. For this reason, this tool's result states which one applies. This
+              tool's result does not show only a date.
             </p>
           </div>
         </>

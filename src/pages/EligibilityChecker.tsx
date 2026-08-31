@@ -206,17 +206,17 @@ export function EligibilityCheckerPage() {
       supportingContent={
         <>
           <SafetyNote title="A screen, not a diagnosis or a promise" variant="warning">
-            This tool does not diagnose any condition and does not guarantee that you will be
-            prescribed anything. It only checks a few commonly used screening factors. A licensed
-            clinician reviews your complete medical history — including things this short form
-            can't capture — before any prescribing decision is made.
+            This tool does not diagnose a condition. This tool does not guarantee a prescription.
+            This tool checks a small number of common screening factors. A licensed clinician
+            reviews your complete medical history before any prescribing decision. This short form
+            cannot capture your complete history.
           </SafetyNote>
 
           <MethodologyBlock
             lastUpdated="August 31, 2026 (prototype build)"
-            calculation="State availability is checked against a sample served-states list. BMI is calculated as 703 × weight (lbs) ÷ height (in)². The screening flags map to well-known GLP-1 boxed-warning and contraindication topics (thyroid C-cell tumor history, pregnancy, pancreatitis history, type 1 diabetes) and to a commonly used BMI starting threshold."
-            dataSource="Sample state-availability list built for this prototype (not Temi's live /states data) and standard, publicly documented GLP-1 prescribing considerations."
-            limitations="Your full medical history, current medications, lab values, and anything a clinician would ask in a real intake. This tool intentionally asks very few questions — a real review asks many more."
+            calculation="This tool checks your state against a sample list of served states. This tool calculates BMI with this formula: BMI = 703, multiplied by weight in pounds, divided by height in inches squared. The screening questions relate to known warnings for GLP-1 medications. These warnings cover thyroid C-cell tumor history, pregnancy, pancreatitis history, and type 1 diabetes. This tool also uses a common starting BMI value."
+            dataSource="This tool uses a sample state-availability list. This list is not Temi's live data. This tool also uses standard, public information about GLP-1 prescribing."
+            limitations="This tool does not check your full medical history. This tool does not check your current medications or lab values. This tool does not ask every question a clinician would ask. This tool asks few questions on purpose. A real clinical review asks many more questions."
           />
 
           <div className="max-w-none text-sm leading-relaxed text-muted-foreground">
@@ -224,19 +224,18 @@ export function EligibilityCheckerPage() {
               Why a screen, not a form that promises an answer
             </h2>
             <p className="mb-3">
-              Temi currently serves a subset of states and maintains a waitlist for the rest, and
-              every prescribing decision ultimately depends on a full clinical review, not a
-              handful of form fields. The point of this tool isn't to replace that review — it's
-              to route people to the right next step quickly: a waitlist if their state isn't
-              served yet, a heads-up that a closer clinical look is coming if something they
-              shared warrants it, or a clear signal that the standard next step is a full
-              intake.
+              Temi serves some states today. Temi keeps a waitlist for the other states. A full
+              clinical review decides every prescription. This form does not decide a
+              prescription. This tool sends you to the correct next step. If your state is not
+              served, this tool sends you to the waitlist. If your answers need a closer look,
+              this tool tells you that a clinician will review your case. If neither applies, this
+              tool tells you that a full intake is the next step.
             </p>
             <p>
-              That's also why the outcome copy avoids words like "approved," "qualified," or
-              "denied." Those words describe a clinical decision this tool isn't making. What it
-              can honestly say is what the screen found and what typically happens next — nothing
-              more.
+              For this reason, this tool does not use the words "approved," "qualified," or
+              "denied." These words describe a clinical decision. This tool does not make a
+              clinical decision. This tool can only report what the screen found. This tool can
+              only report the usual next step.
             </p>
           </div>
         </>

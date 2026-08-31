@@ -156,19 +156,19 @@ export function DoseCalculatorPage() {
       supportingContent={
         <>
           <SafetyNote title="Educational math only — not a dosing instruction" variant="warning">
-            This tool converts a prescribed milligram dose into a syringe unit reading. It does
-            not tell you whether a dose is right for you, and it is not a substitute for
-            instructions from your prescriber or pharmacist. Never change your dose, your vial, or
-            your injection technique based on this calculator alone. If a number here doesn't
-            match what your prescriber or pharmacy label says, stop and call them before drawing
-            up an injection.
+            This tool converts a dose in milligrams to a syringe reading in units. This tool does
+            not tell you if a dose is correct for you. This tool does not replace instructions
+            from your prescriber or pharmacist. Do not change your dose, your vial, or your
+            injection method because of this tool alone. Check this tool's numbers against your
+            prescriber's instructions and your pharmacy label. If the numbers do not match, stop.
+            Call your prescriber or pharmacist before you draw up an injection.
           </SafetyNote>
 
           <MethodologyBlock
             lastUpdated="August 31, 2026 (prototype build)"
-            calculation="Volume (mL) = prescribed dose (mg) ÷ vial concentration (mg/mL). Units on a standard U-100 syringe = volume (mL) × 100, since a U-100 syringe is calibrated at 100 units per milliliter."
-            dataSource="Standard pharmacology unit-conversion math and common U-100 syringe calibration. Concentration presets reflect typical compounded semaglutide and tirzepatide vial strengths seen in Temi's blog content, not a specific patient's prescription."
-            limitations="Syringes calibrated differently from U-100 (for example U-40), dead space in the needle or syringe, and any rounding your pharmacy applies when dispensing. Always confirm the concentration on your actual vial label, which can vary by fill."
+            calculation="This tool calculates volume in this way: volume in mL = dose in mg, divided by vial concentration in mg/mL. This tool then calculates units on a standard U-100 syringe: units = volume in mL, multiplied by 100. A U-100 syringe has 100 units for each milliliter."
+            dataSource="This tool uses standard unit-conversion math. This tool uses the standard scale of a U-100 syringe. The concentration options on this page show common vial strengths for compounded semaglutide and tirzepatide. Temi found these strengths in its own blog articles. These options do not show one patient's real prescription."
+            limitations="This tool does not cover syringes with a different scale, for example a U-40 syringe. This tool does not include dead space in the needle or syringe. This tool does not include rounding that your pharmacy may use. Always check the concentration on your vial label. Concentration can change between fills."
           />
 
           <div className="max-w-none text-sm leading-relaxed text-muted-foreground">
@@ -176,26 +176,26 @@ export function DoseCalculatorPage() {
               Why this confusion is so common
             </h2>
             <p className="mb-3">
-              Compounded GLP-1 medications are typically dispensed as a multi-dose vial measured
-              in milligrams per milliliter, while the syringes used to draw them up are marked in
-              units — a labeling mismatch that doesn't exist with a pre-filled pen. That gap is
-              exactly where dosing errors happen, and it's also the single most common
-              vial-and-dose question on Temi's own blog, which has already published on vial
-              concentration math and dose-splitting for both semaglutide and tirzepatide.
+              A pharmacy usually dispenses compounded GLP-1 medication in a multi-dose vial. The
+              vial label shows concentration in milligrams per milliliter. A syringe shows units,
+              not milligrams per milliliter. A pre-filled pen does not have this problem. Dosing
+              errors can happen at this point. This is the most common vial-and-dose question on
+              Temi's blog. Temi's blog already explains vial concentration math and dose-splitting
+              for semaglutide and tirzepatide.
             </p>
             <p className="mb-3">
-              The two numbers that actually vary are the ones this tool asks for first:
-              concentration (which can differ between pharmacies and even between fills from the
-              same pharmacy) and your prescribed dose (which changes as you move through a
-              titration schedule). Getting either one wrong scales the other, which is why this
-              tool shows the intermediate volume-in-mL step rather than jumping straight to a
-              units number — so a mistaken input is easier to catch before it matters.
+              Two numbers can change: concentration and prescribed dose. This tool asks for both
+              numbers first. Concentration can differ between pharmacies. Concentration can also
+              differ between fills from the same pharmacy. Prescribed dose can change during a
+              titration schedule. A wrong number for either value changes the final result. This
+              tool shows the volume in mL as a middle step. This step helps you find a wrong input
+              before it causes a problem.
             </p>
             <p>
-              This is deliberately framed as arithmetic, not medical advice. A prescriber or
-              pharmacist has context this tool doesn't: your specific vial, your injection
-              technique, and how your dose may be changing. When the two disagree, the person, not
-              the calculator, is right.
+              This tool provides math only. This tool does not provide medical advice. Your
+              prescriber or pharmacist knows things this tool does not know. They know your
+              specific vial. They know your injection technique. They know if your dose is
+              changing. If this tool and your prescriber disagree, follow your prescriber.
             </p>
           </div>
         </>

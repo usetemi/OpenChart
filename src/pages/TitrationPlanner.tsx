@@ -182,18 +182,19 @@ export function TitrationPlannerPage() {
       supportingContent={
         <>
           <SafetyNote title="A planning aid, not a prescribing instruction" variant="warning">
-            This calendar shows typical, FDA-labeled dose-escalation steps for reference only. Your
-            actual schedule is set by your prescriber and may be slower, faster, or different
-            based on how you respond and any side effects you have. Never increase, decrease, or
-            restart a dose based on this calendar alone — always follow your prescriber's specific
-            instructions, and call them before making any change.
+            This calendar shows typical FDA-labeled dose steps. Use this calendar for reference
+            only. Your prescriber sets your real schedule. Your real schedule can be slower,
+            faster, or different from this calendar. Your response and your side effects can
+            change your schedule. Do not increase, decrease, or restart a dose because of this
+            calendar alone. Always follow your prescriber's specific instructions. Call your
+            prescriber before you change your dose.
           </SafetyNote>
 
           <MethodologyBlock
             lastUpdated="August 31, 2026 (prototype build)"
-            calculation="Each step's date range is calculated as (start date) + (week number − 1) × 7 days. Dose values and week counts follow the general escalation pattern published in FDA labeling for these medication classes."
-            dataSource="Publicly available FDA prescribing information for semaglutide- and tirzepatide-class GLP-1 medications. Not connected to any individual's actual prescription or Temi's clinical system."
-            limitations="Dose adjustments your prescriber makes for side effects, a slower or faster titration pace, treatment holds, or a different starting dose than the label default."
+            calculation="This tool calculates each step's date range like this: start date, plus the week number minus 1, multiplied by 7 days. The dose values and week counts follow the general pattern in FDA labeling for these medication classes."
+            dataSource="This tool uses public FDA prescribing information for semaglutide and tirzepatide medications. This tool is not connected to your real prescription. This tool is not connected to Temi's clinical system."
+            limitations="This tool does not include dose changes your prescriber makes for side effects. This tool does not include a slower or faster schedule. This tool does not include a treatment hold. This tool does not include a different starting dose."
           />
 
           <div className="max-w-none text-sm leading-relaxed text-muted-foreground">
@@ -201,18 +202,17 @@ export function TitrationPlannerPage() {
               Why a calendar, not just a dosing chart
             </h2>
             <p className="mb-3">
-              Titration schedules are usually presented as a static table of doses and week
-              numbers, which leaves the reader to do their own date math to figure out what
-              applies to them right now. This tool does that math instead — enter when you started
-              (or plan to start), and it maps the standard steps onto actual calendar dates,
-              highlighting the step that lines up with today.
+              A titration schedule is usually a table of doses and week numbers. A reader must
+              calculate the correct dates alone. This tool calculates the dates for you. Enter
+              your start date, or your planned start date. This tool maps the standard steps to
+              real calendar dates. This tool highlights the step for today's date.
             </p>
             <p>
-              It's deliberately conservative about what it claims. Titration paces vary — a
-              prescriber may hold a dose longer if side effects haven't settled, or move faster if
-              someone tolerates each step well. This calendar shows the label default, framed
-              explicitly as a reference to bring to a prescriber conversation, not a plan to follow
-              independently.
+              This tool makes limited claims on purpose. Titration pace can vary between patients.
+              A prescriber can hold a dose longer if side effects continue. A prescriber can move
+              faster if a patient tolerates each step well. This calendar shows the default
+              schedule from the product label. Use this calendar as a reference for a conversation
+              with your prescriber. Do not use this calendar as an independent treatment plan.
             </p>
           </div>
         </>

@@ -270,19 +270,18 @@ export function CostCalculatorPage() {
       supportingContent={
         <>
           <SafetyNote title="This is a pricing estimate, not a bill" variant="default">
-            The numbers above are illustrative examples built for this prototype — they are not
-            connected to Temi's live pricing systems. Your actual price depends on your pharmacy,
-            your dose, and current acquisition costs, and will always be shown to you before you
-            pay. Compounded medications shown here are not FDA-approved versions of the
-            brand-name product; they are prepared by licensed pharmacies to meet an individual
-            prescription.
+            The numbers above are sample numbers for this prototype. They are not connected to
+            Temi's live pricing system. Your real price depends on your pharmacy, your dose, and
+            current costs. Temi will show your price before you pay. The compounded medications on
+            this page are not FDA-approved copies of the brand-name product. A licensed pharmacy
+            prepares each compounded medication for one prescription.
           </SafetyNote>
 
           <MethodologyBlock
             lastUpdated={`${PRICING_AS_OF} (illustrative sample data, refreshed manually for this prototype)`}
-            dataSource="Sample acquisition-cost bands and publicly reported manufacturer list prices, used only to demonstrate the calculation. A production version would connect to Temi's live pharmacy pricing feed."
-            calculation="Compounded medication price = pharmacy acquisition cost, marked up by no more than 15% (Temi's stated cap). Non-members additionally pay a 20% marketplace service fee on compounded orders plus a flat prescription service fee ($79 new / $15 refill). Temi Care members ($449/yr) pay no per-order service or marketplace fees, amortized here as a monthly figure. Brand-name medications are shown at manufacturer list price and are not subject to the compounded cost-plus cap."
-            limitations="Insurance coverage, pharmacy-to-pharmacy price variation, shipping, and promotional pricing. Does not reflect real-time acquisition costs."
+            dataSource="This page uses sample cost ranges and public manufacturer list prices. These numbers only show how the calculation works. A live version of this tool will connect to Temi's pharmacy pricing system."
+            calculation="Temi calculates the compounded medication price like this: pharmacy cost, plus a markup of 15% or less. Non-members also pay a 20% marketplace fee on compounded orders. Non-members also pay a service fee: $79 for a new prescription, or $15 for a refill. Temi Care members pay $449 each year. Members do not pay the service fee or the marketplace fee. This page shows the $449 fee as a monthly amount. This page shows brand-name medications at the manufacturer's list price. The 15% cap does not apply to brand-name medications."
+            limitations="This tool does not include insurance coverage. This tool does not include price differences between pharmacies. This tool does not include shipping costs or sale prices. This tool does not show real-time pharmacy costs."
           />
 
           <div className="max-w-none text-sm leading-relaxed text-muted-foreground">
@@ -290,32 +289,29 @@ export function CostCalculatorPage() {
               Why Temi shows the markup, not just the price
             </h2>
             <p className="mb-3">
-              Most pharmacies and telehealth platforms show a single sticker price for a
-              compounded medication and leave you to guess how it was set. Temi's stated policy is
-              different: medication is priced at pharmacy cost plus a markup capped at 15%. That
-              cap is a meaningful, publishable fact — almost no competitor in this category states
-              a markup cap at all — and it's the reason this calculator breaks the medication line
-              out separately from service and membership fees instead of bundling everything into
-              one number.
+              Most pharmacies show one price for a compounded medication. They do not explain how
+              they set the price. Temi's policy is different. Temi prices each medication at
+              pharmacy cost, plus a markup of 15% or less. Few other companies state a markup
+              limit. This is why the calculator shows the medication cost as a separate line. The
+              calculator does not combine the medication cost with the service fee and the
+              membership fee.
             </p>
             <p className="mb-3">
-              The two pricing paths matter because they suit different usage patterns. Pay-per-order
-              pricing (a $15 prescription service fee per refill, $79 for a new prescription, plus
-              a 20% marketplace service fee on compounded orders) tends to cost less for someone
-              filling infrequently or still deciding whether to continue treatment. The $449/year
-              Temi Care membership waives the per-order service and marketplace fees entirely,
-              which tends to pay for itself for anyone refilling monthly for more than a few
-              months — this calculator's membership toggle is meant to make that break-even
-              visible rather than asserted.
+              Temi offers two payment paths. Pay-per-order costs $15 per refill, or $79 for a new
+              prescription. Pay-per-order also adds a 20% marketplace fee on compounded orders.
+              Pay-per-order can cost less for a person who refills rarely. Pay-per-order can also
+              suit a person who has not decided to continue treatment. Temi Care membership costs
+              $449 each year. A member does not pay the service fee or the marketplace fee.
+              Membership can save money for a person who refills every month for several months.
+              Use the membership switch on this page to compare both paths.
             </p>
             <p>
-              One more distinction worth being explicit about: compounded semaglutide and
-              tirzepatide are not FDA-approved generic or brand versions of the medication. They
-              are prepared by a licensed compounding pharmacy to fill an individual prescription,
-              typically when the approved product is in shortage or a patient needs a different
-              strength or formulation. This calculator keeps compounded and brand-name options in
-              separate selections rather than a single side-by-side list, specifically so the
-              distinction isn't lost in a price comparison.
+              Note this important difference. Compounded semaglutide and compounded tirzepatide
+              are not FDA-approved generic or brand medications. A licensed compounding pharmacy
+              prepares each one for a single prescription. A pharmacy often does this when the
+              approved product is not available, or when a patient needs a different strength or
+              form. This calculator lists compounded medications and brand-name medications
+              separately. This keeps the difference clear during a price comparison.
             </p>
           </div>
         </>
