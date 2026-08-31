@@ -28,14 +28,29 @@ npm install
 npm run dev
 ```
 
+## Test
+
+```bash
+npm run test
+```
+
+Rendering smoke tests (Vitest + React Testing Library) cover: the homepage lists every tool, each
+tool page renders its heading/reviewer byline/methodology block, home ↔ tool navigation works, and
+each tool's core calculation (cost estimate, dose-to-units conversion, state-availability
+screening) responds correctly to input.
+
 ## Build
 
 ```bash
 npm run build
 ```
 
+The build uses a relative (`./`) asset base so it works whether GitHub Pages serves it from a
+domain root (private-repo Pages sites use an obscured root domain) or from a `/repo-name/`
+subpath (public-repo Pages sites) — paired with a hash router for client-side routing either way.
+
 ## Deploy
 
-Pushes to `main` (and the current working branch) build and publish to GitHub Pages via
-`.github/workflows/deploy.yml`. GitHub Pages must be set to **Source: GitHub Actions** once in
-the repo's Settings → Pages before the first deploy will go live.
+Pushes to `main` (and the current working branch) run the test suite, build, and publish to
+GitHub Pages via `.github/workflows/deploy.yml`. GitHub Pages must be set to **Source: GitHub
+Actions** once in the repo's Settings → Pages before the first deploy will go live.
